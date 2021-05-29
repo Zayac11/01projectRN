@@ -1,22 +1,25 @@
 
+const ADD_TASK = 'ADD_TASK'
 
 let initialState = {
-    data: 'Kirill',
+    tasks: [
+        {title: 'Купить воды', date: (new Date).toLocaleDateString() + ' ' + (new Date).toLocaleTimeString()},
+    ]
 }
 
 const taskReducer = (state = initialState, action) => {
     switch (action.type) {
-        case '':
+        case ADD_TASK:
             return {
                 ...state,
-
+                tasks: [...state.tasks, action.data]
             }
         default:
             return state;
     }
 }
 
-export const setPopularAndPinnedNews = (news) => ({type: '', news})
+export const addNewTask = (data) => ({type: ADD_TASK, data})
 
 
 export const getPopularAndPinnedNews = () => {

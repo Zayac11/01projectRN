@@ -5,17 +5,15 @@ import {useSelector} from 'react-redux'
 
 const Container = () => {
 
-    const data = useSelector(state => state.task.data)
-
     return (
         <View style={styles.container}>
             <View>
                 <Text selectionColor={'red'} selectable={true} accessible={true} accessibilityLabel={'Парарарар'}
-                      accessibilityHint={'Что будет если?????'}>{data}</Text>
+                      accessibilityHint={'Что будет если?????'}>Kirill</Text>
             </View>
             <View style={styles.button}>
                 <Button
-                    onPress={() => Alert.alert('SUUUB', 'MESSAGEE', [{text: 'OK', onPress: () => console.log('djashdsaj')}, {text: 'Мы часто кидаем снюс', onPress: () => console.log('Aburdozik')}])}
+                    onPress={() => Alert.alert('SUUUB', 'MESSAGEE', [{text: 'OK', onPress: () => console.log('djashdsaj')}, {text: 'Text text', onPress: () => console.log('Aburdozik')}])}
                     title='Ссюда'
 
                 />
