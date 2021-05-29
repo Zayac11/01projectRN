@@ -1,13 +1,17 @@
 import React from 'react'
 import {Alert, Button, Image, StyleSheet, Text, View, TouchableHighlight, TouchableWithoutFeedback} from 'react-native'
 import {StatusBar} from 'expo-status-bar'
+import {useSelector} from 'react-redux'
 
 const Container = () => {
+
+    const data = useSelector(state => state.task.data)
+
     return (
         <View style={styles.container}>
             <View>
                 <Text selectionColor={'red'} selectable={true} accessible={true} accessibilityLabel={'Парарарар'}
-                      accessibilityHint={'Что будет если?????'}>Хеллоу</Text>
+                      accessibilityHint={'Что будет если?????'}>{data}</Text>
             </View>
             <View style={styles.button}>
                 <Button
