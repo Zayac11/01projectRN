@@ -1,7 +1,7 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import Task from './Task'
 import {useDispatch, useSelector} from 'react-redux'
-import {addNewTask} from '../../redux/task-reducer'
+import {addNewTask, deleteTask, getTasks} from '../../redux/task-reducer'
 
 const TaskContainer = (props) => {
 
@@ -9,6 +9,15 @@ const TaskContainer = (props) => {
     const tasks = useSelector(state => state.task.tasks)
 
     const [title, setTitleValue] = useState('')
+
+    useEffect(() => {
+        dispatch(getTasks())
+    }, [])
+
+    const deleteCurrentTask = (index) => {
+
+        dispatch(deleteTask(index))
+    }
 
     const addTask = () => {
         const data = {
@@ -20,7 +29,7 @@ const TaskContainer = (props) => {
     }
 
     return (
-        <Task tasks={tasks} addTask={addTask} setTitleValue={setTitleValue} title={title} />
+        <Task tasks={tasks} addTask={addTask} deleteCurrentTask={deleteCurrentTask} setTitleValue={setTitleValue} title={title} />
     )
 }
 
