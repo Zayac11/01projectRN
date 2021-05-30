@@ -1,7 +1,8 @@
 import React from 'react'
 import {Button, StyleSheet, Text, View} from 'react-native'
 
-const TaskItem = ({task}) => {
+const TaskItem = ({task, deleteCurrentTask, ...props}) => {
+
     return (
         <View style={styles.taskContainer}>
             <Text style={styles.text}>
@@ -10,7 +11,7 @@ const TaskItem = ({task}) => {
             <Text style={styles.date}>
                 {task.item.date}
             </Text>
-            <Button title={'Удалить'} onPress={() => props.deleteCurrentTask(task.index)} />
+            <Button title={'Удалить'} onPress={() => deleteCurrentTask(task.index)} />
         </View>
     )
 }

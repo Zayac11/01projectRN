@@ -4,25 +4,24 @@ import TaskItem from './TaskItem'
 
 const Task = (props) => {
     return (
-        <ScrollView>
-            <View style={styles.container}>
-                <View style={styles.tasksContainer}>
-                    <TextInput multiline={true}
-                               placeholder={'Write new task'}
-                               style={styles.textarea}
-                               value={props.title}
-                               onChangeText={(value) => props.setTitleValue(value)}
-                    />
-                    <View style={styles.button}>
-                        <Button onPress={props.addTask} title={'Добавить'} />
-                    </View>
-                </View>
 
-                <FlatList style={styles.tasksContainer} data={props.tasks} renderItem={(task) => {
-                    return <TaskItem task={task} />
-                }} keyExtractor={(item, index) => index.toString()} />
+        <View style={styles.container}>
+            <View style={styles.formContainer}>
+                <TextInput multiline={true}
+                           placeholder={'Write new task'}
+                           style={styles.textarea}
+                           value={props.title}
+                           onChangeText={(value) => props.setTitleValue(value)}
+                />
+                <View style={styles.button}>
+                    <Button onPress={props.addTask} title={'Добавить'} />
+                </View>
             </View>
-        </ScrollView>
+                <FlatList style={styles.tasksContainer} data={props.tasks} renderItem={(task) => {
+                    return <TaskItem deleteCurrentTask={props.deleteCurrentTask} task={task} />
+                }} keyExtractor={(item, index) => index.toString()} />
+        </View>
+
     )
 }
 
@@ -35,15 +34,18 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
 
+    formContainer: {
+        width: '100%',
+        marginBottom: 30,
+    },
+
     textarea: {
         textAlignVertical: 'top',
         padding: 10,
-        minHeight: 75,
         width: '100%',
         borderStyle: 'solid',
-        borderWidth: 1,
+        borderBottomWidth: 1,
         borderColor: 'black',
-        borderRadius: 7,
         marginBottom: 20,
     },
 
@@ -53,6 +55,5 @@ const styles = StyleSheet.create({
 
     tasksContainer: {
         width: '100%',
-        marginBottom: 30,
     },
 })

@@ -6,7 +6,6 @@ import {Provider} from 'react-redux'
 import store from './src/redux/redux-store'
 import {NavigationContainer} from '@react-navigation/native'
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
-import Container from './src/components/Container/Container'
 import TaskContainer from './src/components/Task/TaskContainer'
 
 const Tab = createBottomTabNavigator();
@@ -25,11 +24,15 @@ const App = () => {
                                 tabStyle: {
                                     flex: 1,
                                     justifyContent: 'center',
+                                },
+                                labelStyle: {
+                                    fontSize: 12,
                                 }
                             }}
                         >
-                            <Tab.Screen name="Task" component={TaskContainer} />
-                            <Tab.Screen name="Home" component={Container} />
+                            <Tab.Screen name="Задачи" component={TaskContainer} />
+                            <Tab.Screen name="Тоже задачи" component={TaskContainer} />
+                            {/*<Tab.Screen name="Home" component={Container} />*/}
                         </Tab.Navigator>
                     </NavigationContainer>
                     <StatusBar backgroundColor={'white'} style='dark' />
