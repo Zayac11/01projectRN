@@ -1,5 +1,6 @@
 import React from 'react'
-import {Button, ScrollView, StyleSheet, Text, TextInput, View} from 'react-native'
+import {Button, FlatList, ScrollView, StyleSheet, Text, TextInput, View} from 'react-native'
+import TaskItem from './TaskItem'
 
 const Task = (props) => {
     return (
@@ -17,25 +18,9 @@ const Task = (props) => {
                     </View>
                 </View>
 
-                <View style={styles.tasksContainer}>
-                    {
-                        props.tasks && props.tasks.length > 0 &&
-                        props.tasks.map((task, index) => {
-                            return (
-                                <View style={styles.taskContainer} key={index}>
-                                    <Text style={styles.text}>
-                                        {task.title}
-                                    </Text>
-                                    <Text style={styles.date}>
-                                        {task.date}
-                                    </Text>
-                                    <Button title={'Удалить'} onPress={() => props.deleteCurrentTask(index)} />
-                                </View>
-                            )
-                        })
-                    }
-                </View>
-
+                <FlatList style={styles.tasksContainer} data={props.tasks} renderItem={(task) => {
+                    return <TaskItem task={task} />
+                }} keyExtractor={(item, index) => index.toString()} />
             </View>
         </ScrollView>
     )
@@ -68,31 +53,6 @@ const styles = StyleSheet.create({
 
     tasksContainer: {
         width: '100%',
-        alignItems: 'center',
         marginBottom: 30,
     },
-
-    taskContainer: {
-        width: '100%',
-        padding: 10,
-        marginBottom: 15,
-        borderStyle: 'solid',
-        borderWidth: 1,
-        borderColor: 'black',
-        borderRadius: 7,
-    },
-
-    text: {
-        marginBottom: 10,
-        alignSelf: 'flex-start',
-        justifyContent: 'center',
-        flexWrap: 'wrap',
-    },
-
-    date: {
-        fontSize: 12,
-        marginBottom: 10,
-        alignSelf: 'flex-end',
-    },
-
 })
