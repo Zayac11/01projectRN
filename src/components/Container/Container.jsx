@@ -1,15 +1,16 @@
 import React from 'react'
-import {Alert, Button, Image, StyleSheet, Text, View, TouchableHighlight, TouchableWithoutFeedback} from 'react-native'
-import {StatusBar} from 'expo-status-bar'
-import {useSelector} from 'react-redux'
+import {Alert, Button, Image, StyleSheet, Text, View, TouchableWithoutFeedback} from 'react-native'
 
-const Container = () => {
+const Container = (props) => {
+
 
     return (
         <View style={styles.container}>
             <View>
                 <Text selectionColor={'red'} selectable={true} accessible={true} accessibilityLabel={'Парарарар'}
                       accessibilityHint={'Что будет если?????'}>Kirill</Text>
+                <Text selectionColor={'red'} selectable={true} accessible={true} accessibilityLabel={'Парарарар'}
+                      accessibilityHint={'Что будет если?????'}>{props.route.params.name}</Text>
             </View>
             <View style={styles.button}>
                 <Button

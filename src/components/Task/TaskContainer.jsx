@@ -3,6 +3,7 @@ import Task from './Task'
 import {useDispatch, useSelector} from 'react-redux'
 import {addNewTask, deleteTask, getTasks} from '../../redux/task-reducer'
 import Header from '../../common/Header'
+import {SafeAreaView} from 'react-native-safe-area-context'
 
 const TaskContainer = (props) => {
 
@@ -30,10 +31,10 @@ const TaskContainer = (props) => {
     }
 
     return (
-        <>
+        <SafeAreaView style={{flex: 1}}>
             <Header title={'Мои задачи'} />
             <Task tasks={tasks} addTask={addTask} deleteCurrentTask={deleteCurrentTask} setTitleValue={setTitleValue} title={title} />
-        </>
+        </SafeAreaView>
     )
 }
 
