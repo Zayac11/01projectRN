@@ -1,11 +1,14 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import Task from './Task'
 import {useDispatch, useSelector} from 'react-redux'
 import {addNewTask, deleteTask, getTasks} from '../../redux/task-reducer'
 import Header from '../../common/Header'
 import {SafeAreaView} from 'react-native-safe-area-context'
+import {Animated} from 'react-native-web'
 
 const TaskContainer = (props) => {
+
+    const fadeAnim = useRef(new Animated.Value(0)).current
 
     const dispatch = useDispatch()
     const tasks = useSelector(state => state.task.tasks)
@@ -14,6 +17,16 @@ const TaskContainer = (props) => {
 
     useEffect(() => {
         dispatch(getTasks())
+    }, [])
+
+    useEffect(() => {
+        Animated.timing(
+            fadeAnim,
+            {
+                toValue: 1,
+                duration: 1000,
+            }
+        ).start();
     }, [])
 
     const deleteCurrentTask = (index) => {
@@ -32,8 +45,10 @@ const TaskContainer = (props) => {
 
     return (
         <SafeAreaView style={{flex: 1}}>
-            <Header title={'Мои задачи'} />
-            <Task tasks={tasks} addTask={addTask} deleteCurrentTask={deleteCurrentTask} setTitleValue={setTitleValue} title={title} />
+            <Animated.View style={{opacity: fadeAnim}}>
+                <Header title={'Мои задачи'} />
+                <Task tasks={tasks} addTask={addTask} deleteCurrentTask={deleteCurrentTask} setTitleValue={setTitleValue} title={title} />
+            </Animated.View>
         </SafeAreaView>
     )
 }
