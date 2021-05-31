@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import Task from './Task'
 import {useDispatch, useSelector} from 'react-redux'
 import {addNewTask, deleteTask, getTasks} from '../../redux/task-reducer'
+import {SafeAreaView} from 'react-native-safe-area-context'
 
 const TaskContainer = (props) => {
 
@@ -29,10 +30,9 @@ const TaskContainer = (props) => {
     }
 
     return (
-
-            // <Animated.View style={{opacity}}>
-                <Task tasks={tasks} addTask={addTask} deleteCurrentTask={deleteCurrentTask} setTitleValue={setTitleValue} title={title} />
-            // <Animated.View>
+        // <SafeAreaView style={{flex: 1}}>
+            <Task tasks={tasks} addTask={addTask} deleteCurrentTask={deleteCurrentTask} setTitleValue={setTitleValue} title={title} />
+        // </SafeAreaView>
 
     )
 }

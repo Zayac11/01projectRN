@@ -11,7 +11,7 @@ const App = () => {
     return (
         <SafeAreaProvider initialMetrics={initialWindowMetrics}>
             <Provider store={store}>
-                <TabBarTest />
+                <TabBar />
                 <StatusBar style='light' />
             </Provider>
         </SafeAreaProvider>
