@@ -4,14 +4,15 @@ import {initialWindowMetrics, SafeAreaProvider} from 'react-native-safe-area-con
 import {Provider} from 'react-redux'
 import store from './src/redux/redux-store'
 import TabBar from './src/components/TabBar/TabBar'
+import TabBarTest from './src/components/TabBar/TopBarTest'
 
 
 const App = () => {
     return (
         <SafeAreaProvider initialMetrics={initialWindowMetrics}>
             <Provider store={store}>
-                <TabBar />
-                <StatusBar backgroundColor={'white'} style='dark' />
+                <TabBarTest />
+                <StatusBar style='light' />
             </Provider>
         </SafeAreaProvider>
     )

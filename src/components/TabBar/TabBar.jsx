@@ -37,7 +37,6 @@ const TabBar = (props) => {
     return (
         <NavigationContainer>
             <Tab.Navigator
-
                 screenOptions={({route}) => ({
                     tabBarIcon: ({focused, color, size}) => {
                         if(route.name === 'Задачи') {
