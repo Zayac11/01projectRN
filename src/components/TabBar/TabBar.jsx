@@ -8,6 +8,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import {createStackNavigator} from '@react-navigation/stack'
 import {useSelector} from 'react-redux'
 import TabBarCustom from './TabBarCustom'
+import TabBarModal from './TabBarModal'
 
 const Tab = createBottomTabNavigator()
 const NewsStack = createStackNavigator()
@@ -70,9 +71,9 @@ const TabBar = (props) => {
     return (
         <>
             <Tab.Navigator
-                // tabBar={props => {
-                //     return <TabBarCustom {...props} />
-                // }}
+                tabBar={props => {
+                    return <TabBarModal {...props} />
+                }}
                 // screenOptions={({route}) => ({
                 //     tabBarIcon: ({focused, color, size}) => {
                 //         if(route.name === 'Задачи') {
@@ -95,35 +96,40 @@ const TabBar = (props) => {
                 //     },
                 //     animationEnabled: true,
                 // })}
-                tabBarOptions={{
-                    // activeTintColor: 'blue',
-                    inactiveTintColor: 'black',
-                    activeBackgroundColor: 'white',
-                    tabStyle: {
-                        flex: 1,
-                        justifyContent: 'center',
-                    },
-                    labelStyle: {
-                        fontSize: 12,
-                    }
-                }}
+                // tabBarOptions={{
+                //     // activeTintColor: 'blue',
+                //     inactiveTintColor: 'black',
+                //     activeBackgroundColor: 'white',
+                //     tabStyle: {
+                //         flex: 1,
+                //         justifyContent: 'center',
+                //     },
+                //     labelStyle: {
+                //         fontSize: 12,
+                //     }
+                // }}
             >
                 {/*<Tab.Screen name='Задачи' component={TasksStackScreen}*/}
                 {/*            initialParams={{icon: 'tasks'}}*/}
                 {/*            options={{tabBarBadge: tasksLength, tabBarBadgeStyle: {left: 10, top: 0}}} />*/}
                 {/*<Tab.Screen name='Новости' component={NewsStackScreen} />*/}
+
                 <Tab.Screen
-                    name="Home"
+                    name="Tasks"
                     component={TasksStackScreen}
                     options={{
-                        tabBarButton: (props) => <TabBarCustom label="Задачи" icon='tasks' {...props} />,
+                        tabBarLabel: 'Задачи',
+                        tabBarIcon: 'tasks',
+                        // tabBarButton: (props) => <TabBarCustom label="Задачи" icon='tasks' {...props} />,
                     }}
                 />
                 <Tab.Screen
-                    name="Logger"
+                    name="News"
                     component={NewsStackScreen}
                     options={{
-                        tabBarButton: (props) => <TabBarCustom label="Новости" icon='newspaper' {...props} />,
+                        tabBarLabel: 'Новости',
+                        tabBarIcon: 'newspaper',
+                        // tabBarButton: (props) => <TabBarCustom label="Новости" icon='newspaper' {...props} />,
                     }}
                 />
             </Tab.Navigator>

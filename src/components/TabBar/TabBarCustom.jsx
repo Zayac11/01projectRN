@@ -45,8 +45,7 @@ function Tab({label, accessibilityState, onPress, icon}) {
                 <View style={{flex:1, flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-end'}}>
 
                     <FontAwesome5 name={icon} size={24} color={focused ? '#2196f3' : '#000'} />
-                    <View style={[styles.label]}
-                          label={label}>
+                    <View label={label}>
                         <Text style={focused ? {color: '#2196f3'} : {color: 'black'}}>{label.charAt(0).toUpperCase() + label.slice(1)}</Text>
                     </View>
                 </View>
@@ -65,9 +64,5 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 100,
-
-    },
-    label: {
-
     },
 })
