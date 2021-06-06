@@ -68,7 +68,7 @@ const TabBar = (props) => {
     const tasksLength = useSelector(state => state.task.tasks.length)
 
     return (
-        <NavigationContainer>
+        <>
             <Tab.Navigator
                 // tabBar={props => {
                 //     return <TabBarCustom {...props} />
@@ -127,7 +127,7 @@ const TabBar = (props) => {
                     }}
                 />
             </Tab.Navigator>
-        </NavigationContainer>
+        </>
     )
 }
 

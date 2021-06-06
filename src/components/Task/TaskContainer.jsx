@@ -1,16 +1,12 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect} from 'react'
 import Task from './Task'
 import {useDispatch, useSelector} from 'react-redux'
-import {addNewTask, deleteTask, getTasks} from '../../redux/task-reducer'
-import {SafeAreaView} from 'react-native-safe-area-context'
+import {deleteTask, getTasks} from '../../redux/task-reducer'
 
-const TaskContainer = (props) => {
-
+const TaskContainer = ({navigation, ...props}) => {
 
     const dispatch = useDispatch()
     const tasks = useSelector(state => state.task.tasks)
-
-    const [title, setTitleValue] = useState('')
 
     useEffect(() => {
         dispatch(getTasks())
@@ -20,18 +16,13 @@ const TaskContainer = (props) => {
         dispatch(deleteTask(index))
     }
 
-    const addTask = () => {
-        const data = {
-            title: title,
-            date: (new Date).toLocaleDateString() + ' ' + (new Date).toLocaleTimeString(),
-        }
-        dispatch(addNewTask(data))
-        setTitleValue('')
-    }
+    const onAdd = () => {
+        navigation.navigate('Modal');
+    };
 
     return (
         // <SafeAreaView style={{flex: 1}}>
-            <Task tasks={tasks} addTask={addTask} deleteCurrentTask={deleteCurrentTask} setTitleValue={setTitleValue} title={title} />
+            <Task onAdd={onAdd} tasks={tasks} deleteCurrentTask={deleteCurrentTask} />
         // </SafeAreaView>
 
     )
