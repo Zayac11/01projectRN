@@ -9,7 +9,7 @@ const NewsContainer = (props) => {
     }
     return (
         <>
-            <Header title={'News will be here...'} />
+            {/*<Header title={'News will be here...'} />*/}
             <News loadScene={loadScene} />
         </>
     )
